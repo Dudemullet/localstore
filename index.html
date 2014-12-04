@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>localstore</title>
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <form action="" method="" id="newTodo">
+      <label for="todo-checkbox">Private: </label>
+      <input id="todo-checkbox" class="checkbox" type="checkbox" />
+      <input type="text" id="todo-txt" placeholder="new todo" />
+      <input id="todo-save" type="button" value="Save" />
+    </form>
+    <input type="button" id="clearBtn" value="Clear" />
+
+    <section id="todos">
+      <ul id="privateTodos" data-type="private">
+      </ul>
+      <ul id="publicTodos" data-type="public">
+      </ul>
+    </section>
+
+    <script id="todoTemplate" type="text/x-handlebars-template">
+      {{#each todos}}
+        {{#if done}}
+          <li class="todo finished">
+            <input class="todo-checkbox" type="checkbox" data-index="{{index}}" checked/>
+            <span class="todo-text">{{text}}</span>
+        {{else}}
+          <li class="todo">
+            <input class="todo-checkbox" type="checkbox" data-index="{{index}}" />
+            <span class="todo-text">{{text}}</span>
+        {{/if}}
+          </li>
+      {{/each}}
+    </script>
+
+    <script src="jquery.js"></script>
+    <script src="handlebars-v2.0.0.js"></script>
+    <script src="storage.js"></script>
+    <script src="app.js"></script>
+    <script type="text/javascript">
+      app.init();
+    </script>
+  </body>
+</html>
